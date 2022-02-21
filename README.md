@@ -1,2 +1,5 @@
-# co225-project-group16
-Student Results Management System
+# Student Results Management System
+
+## A mobile application to manage and analyze undergraduate students’ marks.
+
+Available features
