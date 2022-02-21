@@ -7,3 +7,8 @@
 2.	Calculate the necessary grades for each semester to achieve expected GPA in upcoming semesters
 3.	Calculate required exam marks for the expected grade of a particular course
 4.	Shows the rank of the student of the batch and field
+
+### Team members:
+1.	E/18/077	Dharmarathna N.S
+2.	E/18/224	Mihiranga G.D.R
+3.	E/18/227	Mudalige D.H
