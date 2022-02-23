@@ -1,8 +1,7 @@
 //package co225-project-group16.Codes;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
-
-import javax.swing.ToolTipManager;
 
 public class Student {
 
@@ -16,7 +15,7 @@ public class Student {
     int regNo;
     int totalSemesters;
     ArrayList<ArrayList<String>> studentGrades = new ArrayList<ArrayList<String>>();
-
+    List <Double> semesterGPAs = new ArrayList<>();
 
     // Constructor for a new sign up
     public Student(String username, String password, String firstName, String lastName, String faculty, int batchNo, int regNo, int totalSemesters){
@@ -58,6 +57,7 @@ public class Student {
         return this.regNo;
     }
 
+    // Method to store the grades in the 2D Array
     public void setGrades(int semesterNumber){
         Scanner in = new Scanner(System.in);
         System.out.printf("Please enter the number of subjects you have in semester %d : ",semesterNumber);    // can be accessed through admin
@@ -71,4 +71,56 @@ public class Student {
         }
         in.close();
     }
+
+    // Method to calculate the current GPA of a given semester
+    public double getCurrentGPA(int currentSemester, int totalSubjects){          // totalSubjects should be taken from the admin class
+        double currentGPA = 0.0;
+        for (int i=0;i<totalSubjects;++i){
+            String grade = this.studentGrades.get(currentSemester).get(i);
+
+            switch (grade) {
+                case "A+"   :   currentGPA += 4.0;
+                                break;
+                
+                case "A"    :   currentGPA += 4.0;
+                                break;
+                
+                case "A-"   :   currentGPA += 3.7;
+                                break;
+                
+                case "B+"   :   currentGPA += 3.3;
+                                break;
+                
+                case "B"    :   currentGPA += 3;
+                                break;
+                
+                case "B-"   :   currentGPA += 2.7;
+                                break;
+                
+                case "C+"   :   currentGPA += 2.3;
+                                break;
+
+                case "C"    :   currentGPA += 2;
+                                break;
+
+                case "C-"   :   currentGPA += 1.7;
+                                break;
+
+                case "D+"   :   currentGPA += 1.3;
+                                break;
+                            
+                case "D"    :   currentGPA += 1;
+                                break;
+
+                default     :   currentGPA += 0.0;
+                                break;
+            }
+        }
+        currentGPA = currentGPA / totalSubjects;
+        this.semesterGPAs.add(currentSemester-1, currentGPA);              // used auto boxing concept
+        return currentGPA;
+    }
+
+    
+
 }
