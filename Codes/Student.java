@@ -121,6 +121,21 @@ public class Student {
         return currentGPA;
     }
 
-    
+    // Method to calculate the year end GPA when the academic yr is given
+    public double getYearlyMeanGPA(int academicYr){
+        int semesterIndex = academicYr*2 - 2;
+        double YrEndMeanGPA = (this.semesterGPAs.get(semesterIndex) + this.semesterGPAs.get(semesterIndex+1)) / 2;
+        return YrEndMeanGPA;
+    }
+
+    // Method to calculate the mean GPA upto the current semester
+    public double getMeanGPA(int currentSemester){
+        double meanGPA =0.0;
+        for (int i=0;i<currentSemester;++i){
+            meanGPA += this.semesterGPAs.get(i);
+        }
+        meanGPA = meanGPA / currentSemester;
+        return meanGPA;
+    }
 
 }
