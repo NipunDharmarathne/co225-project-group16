@@ -11,6 +11,8 @@ public class Student {
     String firstName;
     String lastName;
     String faculty;
+    String department;
+    int year;
     int batchNo;
     int regNo;
     int totalSemesters;
@@ -18,12 +20,13 @@ public class Student {
     List <Double> semesterGPAs = new ArrayList<>();
 
     // Constructor for a new sign up
-    public Student(String username, String password, String firstName, String lastName, String faculty, int batchNo, int regNo, int totalSemesters){
+    public Student(String username, String password, String firstName, String lastName, String faculty, int year, int batchNo, int regNo, int totalSemesters){
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.faculty = faculty;
+        this.year = year;
         this.batchNo = batchNo;
         this.regNo = regNo;
         this.totalSemesters = totalSemesters;
@@ -33,26 +36,37 @@ public class Student {
         }
     }
 
+    // Method to set the department
+    public void setDepartment(String department){
+        this.department = department;
+    }
+
+    // Method to return the username of the student
     public String getUsername(){
         return this.username;
     }
 
+    // Method to return the password of the student
     public String getPassword(){
         return this.password;
     }
 
+    // Method to return the first name of the student
     public String getFirstName(){
         return this.firstName;
     }
-
+    
+    // Method to return the faculty of the student
     public String getFaculty(){
         return this.faculty;
     }
 
+    // Method to return the batch of the student
     public int getBatchNo(){
         return this.batchNo;
     }
 
+    // Method to return the registration number of the student
     public int getRegNo(){
         return this.regNo;
     }
@@ -123,8 +137,16 @@ public class Student {
 
     // Method to calculate the year end GPA when the academic yr is given
     public double getYearlyMeanGPA(int academicYr){
+        double YrEndMeanGPA = 0.0;
         int semesterIndex = academicYr*2 - 2;
-        double YrEndMeanGPA = (this.semesterGPAs.get(semesterIndex) + this.semesterGPAs.get(semesterIndex+1)) / 2;
+        // If user has entered the grades of the 1st semsester
+        if (this.semesterGPAs.get(semesterIndex) != null){ 
+            YrEndMeanGPA = (this.semesterGPAs.get(semesterIndex) + this.semesterGPAs.get(semesterIndex+1)) / 2;
+        } else {
+            this.setGrades(semesterIndex);
+            double semesterIndexGPA = this.getCurrentGPA(semesterIndex, 7);                       // total subjects can be derived from admin class
+            YrEndMeanGPA = (semesterIndexGPA  + this.semesterGPAs.get(semesterIndex+1)) / 2;
+        }
         return YrEndMeanGPA;
     }
 
@@ -132,10 +154,84 @@ public class Student {
     public double getMeanGPA(int currentSemester){
         double meanGPA =0.0;
         for (int i=0;i<currentSemester;++i){
-            meanGPA += this.semesterGPAs.get(i);
+            if (this.semesterGPAs.get(i) != null) {
+                meanGPA += this.semesterGPAs.get(i);
+            } else {
+                this.setGrades(i);
+                double thisSemGPA = this.getCurrentGPA(i, 7);                       // total subjects can be derived from admin class
+                meanGPA += thisSemGPA;
+            }
         }
         meanGPA = meanGPA / currentSemester;
         return meanGPA;
     }
+
+    // Method to calculate the GPA the student should maintain to obtain his/her expected GPA
+    public double getMustHaveGPA(double expectedGPA, int currentSemester){
+        double accGPA = 0.0;
+        for (int i=0;i<currentSemester;++i){
+            if (this.semesterGPAs.get(i) == null){
+                this.setGrades(i);
+                accGPA += this.getCurrentGPA(i, 7);                                 // total subjects can be derived from admin class
+            } else {
+                accGPA += this.semesterGPAs.get(i);
+            }
+        }
+        return ((expectedGPA*this.totalSemesters) - accGPA) / (this.totalSemesters - currentSemester);
+    }
+
+    // Method to calculate the *minimum marks for a course to achieve the expected grade for a course
+    public double getMarksToAchieveGrade(double continousAssessmentsMarks, String expectedGrade){
+        double expectedMarks = 0.0;
+        switch (expectedGrade) {
+            case "A+"   :   expectedMarks = 85.0;
+                            break;
+            
+            case "A"    :   expectedMarks = 80.0;
+                            break;
+            
+            case "A-"   :   expectedMarks = 75.0;
+                            break;
+            
+            case "B+"   :   expectedMarks = 70.0;
+                            break;
+            
+            case "B"    :   expectedMarks = 65.0;
+                            break;
+            
+            case "B-"   :   expectedMarks = 60.0;
+                            break;
+            
+            case "C+"   :   expectedMarks = 55.0;
+                            break;
+
+            case "C"    :   expectedMarks += 50.0;
+                            break;
+
+            case "C-"   :   expectedMarks = 45.0;
+                            break;
+
+            case "D+"   :   expectedMarks = 40.0;
+                            break;
+                        
+            case "D"    :   expectedMarks = 35.0;
+                            break;
+
+            default     :   expectedMarks = 30.0;
+                            break;
+        }
+        if (continousAssessmentsMarks > expectedMarks){
+            return 0.0;
+        } else {
+            return expectedMarks - continousAssessmentsMarks;
+        }
+    }
+
+    /* // Method to calculate the *minimum grade for each subject to achieve the next semester expected GPA
+    public String getNextSemCourseGrade(int nextSemester, double expectedGPA){
+
+
+    } */
+
 
 }
