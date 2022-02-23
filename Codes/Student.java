@@ -69,4 +69,6 @@ public class Student {
 
             this.studentGrades.get(semesterNumber).add(i-1, grade);            // adding the grades into the corresponding semester
         }
+        in.close();
+    }
 }
