@@ -10,21 +10,25 @@ public class Student {
     String password;
     String firstName;
     String lastName;
+    String University;
     String faculty;
     String department;
     int year;
     int batchNo;
     int regNo;
     int totalSemesters;
+    // ArrayList to store the grades for each course in every semester
     ArrayList<ArrayList<String>> studentGrades = new ArrayList<ArrayList<String>>();
+    // ArrayList to store the GPAs for every semester
     List <Double> semesterGPAs = new ArrayList<>();
 
     // Constructor for a new sign up
-    public Student(String username, String password, String firstName, String lastName, String faculty, int year, int batchNo, int regNo, int totalSemesters){
+    public Student(String username, String password, String firstName, String lastName, String University, String faculty, int year, int batchNo, int regNo, int totalSemesters){
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.University = University;
         this.faculty = faculty;
         this.year = year;
         this.batchNo = batchNo;
@@ -55,10 +59,25 @@ public class Student {
     public String getFirstName(){
         return this.firstName;
     }
+
+    // Method to return the University of the student
+    public String getUniversity(){
+        return this.University;
+    }
     
     // Method to return the faculty of the student
     public String getFaculty(){
         return this.faculty;
+    }
+
+    // Method to return the department of the student
+    public String getDepartment(){
+        return this.department;
+    }
+
+    // Method to return the Year of the student
+    public int getYear(){
+        return this.year;
     }
 
     // Method to return the batch of the student
@@ -227,11 +246,31 @@ public class Student {
         }
     }
 
-    /* // Method to calculate the *minimum grade for each subject to achieve the next semester expected GPA
+    // Method to calculate the mean grade for each subject to achieve the next semester expected GPA
     public String getNextSemCourseGrade(int nextSemester, double expectedGPA){
+        // int totalSubjects = 7;
+        String courseGrade = "";
 
-
-    } */
-
+        if (3.7 < expectedGPA && expectedGPA <= 4.00){
+            courseGrade = "A";
+        } else if (3.3 < expectedGPA && expectedGPA <= 3.7){
+            courseGrade = "A-";
+        } else if (3.0 < expectedGPA && expectedGPA <= 3.3){
+            courseGrade = "B+";
+        } else if (2.7 < expectedGPA && expectedGPA <= 3.0){
+            courseGrade = "B";
+        } else if (2.3 < expectedGPA && expectedGPA <= 2.7){
+            courseGrade = "B-";
+        } else if (2.0 < expectedGPA && expectedGPA <= 2.3){
+            courseGrade = "C+";
+        } else if (1.7 < expectedGPA && expectedGPA <= 2.0){
+            courseGrade = "C";
+        } else if (1.3 < expectedGPA && expectedGPA <= 1.7){
+            courseGrade = "D+";
+        } else if (1.0 < expectedGPA && expectedGPA <= 1.3){
+            courseGrade = "D";
+        }
+        return courseGrade;
+    }
 
 }
