@@ -5,6 +5,10 @@ import java.util.Scanner;
 
 public class Student {
 
+    // static attributes
+    // acts as a local database to store the registered students
+    public static List <Student> students = new ArrayList<>();
+
     // non static attributes
     private String username;
     private String password;
@@ -13,24 +17,22 @@ public class Student {
     private String University;
     private String faculty;
     private String department;
-    private int year;
     private int batchNo;
     private int regNo;
     private int totalSemesters;
-    // ArrayList to store the grades for each course in every semester
-    ArrayList<ArrayList<String>> studentGrades = new ArrayList<ArrayList<String>>();
+    // 2D ArrayList to store the grades for each course in every semester
+    public ArrayList<ArrayList<String>> studentGrades = new ArrayList<ArrayList<String>>();
     // ArrayList to store the GPAs for every semester
-    List <Double> semesterGPAs = new ArrayList<>();
+    public List <Double> semesterGPAs = new ArrayList<>();
 
     // Constructor for a new sign up
-    public Student(String username, String password, String firstName, String lastName, String University, String faculty, int year, int batchNo, int regNo, int totalSemesters){
+    public Student(String username, String password, String firstName, String lastName, String University, String faculty, int batchNo, int regNo, int totalSemesters){
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.University = University;
         this.faculty = faculty;
-        this.year = year;
         this.batchNo = batchNo;
         this.regNo = regNo;
         this.totalSemesters = totalSemesters;
@@ -80,11 +82,6 @@ public class Student {
         return this.department;
     }
 
-    // Method to return the Year of the student
-    public int getYear(){
-        return this.year;
-    }
-
     // Method to return the batch of the student
     public int getBatchNo(){
         return this.batchNo;
@@ -93,6 +90,36 @@ public class Student {
     // Method to return the registration number of the student
     public int getRegNo(){
         return this.regNo;
+    }
+
+    // Method to add the student to the Students ArrayList(local database)
+    public void addStudent(){
+        Student.students.add(this);
+    }
+
+    // Method to add the student to the department ArrayList(local database)
+    public void addStudenttoDepartment(){
+        for (Department dptObj : Department.departments){
+            String uni = dptObj.getUniversity();
+            String fac = dptObj.getFaculty();
+            String dept = dptObj.getDepartment();
+
+            if (uni.equalsIgnoreCase(this.getUniversity()) && fac.equalsIgnoreCase(this.getFaculty()) && dept.equalsIgnoreCase(this.department)){
+                dptObj.departmentStudents.add(this);
+            }
+        }
+    }
+
+    // Method to add the student to the faculty ArrayList(local database)
+    public void addStudenttoFaculty(){
+        for (Faculty facObj : Faculty.FacultyArray){
+            String uni = facObj.getUniversity();
+            String faculty = facObj.getFaculty();
+
+            if (this.getUniversity().equalsIgnoreCase(uni) && this.getFaculty().equalsIgnoreCase(faculty)){
+                facObj.facultyStudents.add(this);
+            }
+        }
     }
 
     // Method to store the grades in the 2D Array
@@ -279,3 +306,4 @@ public class Student {
     }
 
 }
+// add final GPA calculation
