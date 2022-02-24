@@ -92,6 +92,11 @@ public class Student {
         return this.regNo;
     }
 
+    // Method to return the total semester of the student
+    public int getTotalSemesters(){
+        return this.totalSemesters;
+    }
+
     // Method to add the student to the Students ArrayList(local database)
     public void addStudent(){
         Student.students.add(this);
@@ -124,17 +129,45 @@ public class Student {
 
     // Method to store the grades in the 2D Array
     public void setGrades(int semesterNumber){
-        Scanner in = new Scanner(System.in);
-        System.out.printf("Please enter the number of subjects you have in semester %d : ",semesterNumber);    // can be accessed through admin
-        int totalSubjects = in.nextInt();
 
-        for (int i=1;i<=totalSubjects;++i){
-            System.out.printf("Enter the grade of subject[%d]: ",i);           // subject code name ----> from admin
-            String grade = in.next();                                          // nextLine ?? / next ???
+        if (semesterNumber > 2){
+            for (Department dptObj : Department.departments){
+                String uni = dptObj.getUniversity();
+                String fac = dptObj.getFaculty();
+                String dept = dptObj.getDepartment();
 
-            this.studentGrades.get(semesterNumber).add(i-1, grade);            // adding the grades into the corresponding semester
+                if (uni.equalsIgnoreCase(this.getUniversity()) && fac.equalsIgnoreCase(this.getFaculty()) && dept.equalsIgnoreCase(this.department)){
+                    int totalSubjects = Integer.parseInt(dptObj.semesterCourses.get(semesterNumber-1).get(0));
+
+                    Scanner in = new Scanner(System.in);
+                    for (int i=1;i<=totalSubjects;++i){
+                        System.out.print("Enter the grade for " + dptObj.semesterCourses.get(semesterNumber-1).get(i) + ":");  
+                        String grade = in.next();                                          // nextLine ?? / next ???
+            
+                        this.studentGrades.get(semesterNumber-1).add(i-1, grade);            // adding the grades into the corresponding semester
+                    }
+                    in.close();
+                }
+            }
+        } else {
+            for (Faculty facObj : Faculty.FacultyArray){
+                String uni = facObj.getUniversity();
+                String faculty = facObj.getFaculty();
+    
+                if (this.getUniversity().equalsIgnoreCase(uni) && this.getFaculty().equalsIgnoreCase(faculty)){
+                    int totalSubjects = Integer.parseInt(facObj.firstYrCourses.get(semesterNumber-1).get(0));
+
+                    Scanner in = new Scanner(System.in);
+                    for (int i=1;i<=totalSubjects;++i){
+                        System.out.print("Enter the grade for " + facObj.firstYrCourses.get(semesterNumber-1).get(i) + ":");  
+                        String grade = in.next();                                          // nextLine ?? / next ???
+            
+                        this.studentGrades.get(semesterNumber-1).add(i-1, grade);            // adding the grades into the corresponding semester
+                    }
+                    in.close();
+                }
+            }
         }
-        in.close();
     }
 
     // Method to calculate the current GPA of a given semester
@@ -194,9 +227,35 @@ public class Student {
         if (this.semesterGPAs.get(semesterIndex) != null){ 
             YrEndMeanGPA = (this.semesterGPAs.get(semesterIndex) + this.semesterGPAs.get(semesterIndex+1)) / 2;
         } else {
-            this.setGrades(semesterIndex);
-            double semesterIndexGPA = this.getCurrentGPA(semesterIndex, 7);                       // total subjects can be derived from admin class
-            YrEndMeanGPA = (semesterIndexGPA  + this.semesterGPAs.get(semesterIndex+1)) / 2;
+            if (semesterIndex<2){
+                for (Faculty facObj : Faculty.FacultyArray){
+                    String uni = facObj.getUniversity();
+                    String faculty = facObj.getFaculty();
+        
+                    if (this.getUniversity().equalsIgnoreCase(uni) && this.getFaculty().equalsIgnoreCase(faculty)){
+                        int totalSubjects = Integer.parseInt(facObj.firstYrCourses.get(semesterIndex).get(0));
+                        this.setGrades(semesterIndex);
+                        double semesterIndexGPA = this.getCurrentGPA(semesterIndex, totalSubjects); 
+                        YrEndMeanGPA = (semesterIndexGPA  + this.semesterGPAs.get(semesterIndex+1)) / 2;                    
+                        break;
+                    }
+                }
+            } else {
+                for (Department dptObj : Department.departments){
+                    String uni = dptObj.getUniversity();
+                    String fac = dptObj.getFaculty();
+                    String dept = dptObj.getDepartment();
+    
+                    if (uni.equalsIgnoreCase(this.getUniversity()) && fac.equalsIgnoreCase(this.getFaculty()) && dept.equalsIgnoreCase(this.department)){
+                        int totalSubjects = Integer.parseInt(dptObj.semesterCourses.get(semesterIndex).get(0));
+
+                        this.setGrades(semesterIndex);
+                        double semesterIndexGPA = this.getCurrentGPA(semesterIndex, totalSubjects); 
+                        YrEndMeanGPA = (semesterIndexGPA  + this.semesterGPAs.get(semesterIndex+1)) / 2;                    
+                        break;
+                    }
+                }
+            }
         }
         return YrEndMeanGPA;
     }
@@ -208,9 +267,32 @@ public class Student {
             if (this.semesterGPAs.get(i) != null) {
                 meanGPA += this.semesterGPAs.get(i);
             } else {
-                this.setGrades(i);
-                double thisSemGPA = this.getCurrentGPA(i, 7);                       // total subjects can be derived from admin class
-                meanGPA += thisSemGPA;
+                if (i<2){
+                    for (Faculty facObj : Faculty.FacultyArray){
+                        String uni = facObj.getUniversity();
+                        String faculty = facObj.getFaculty();
+            
+                        if (this.getUniversity().equalsIgnoreCase(uni) && this.getFaculty().equalsIgnoreCase(faculty)){
+                            int totalSubjects = Integer.parseInt(facObj.firstYrCourses.get(i).get(0));
+                            this.setGrades(i);
+                            meanGPA += this.getCurrentGPA(i, totalSubjects);                   
+                            break;
+                        }
+                    }
+                } else {
+                    for (Department dptObj : Department.departments){
+                        String uni = dptObj.getUniversity();
+                        String fac = dptObj.getFaculty();
+                        String dept = dptObj.getDepartment();
+        
+                        if (uni.equalsIgnoreCase(this.getUniversity()) && fac.equalsIgnoreCase(this.getFaculty()) && dept.equalsIgnoreCase(this.department)){
+                            int totalSubjects = Integer.parseInt(dptObj.semesterCourses.get(i).get(0));
+                            this.setGrades(i);
+                            meanGPA += this.getCurrentGPA(i, totalSubjects);                  
+                            break;
+                        }
+                    }
+                }
             }
         }
         meanGPA = meanGPA / currentSemester;
@@ -219,16 +301,8 @@ public class Student {
 
     // Method to calculate the GPA the student should maintain to obtain his/her expected GPA
     public double getMustHaveGPA(double expectedGPA, int currentSemester){
-        double accGPA = 0.0;
-        for (int i=0;i<currentSemester;++i){
-            if (this.semesterGPAs.get(i) == null){
-                this.setGrades(i);
-                accGPA += this.getCurrentGPA(i, 7);                                 // total subjects can be derived from admin class
-            } else {
-                accGPA += this.semesterGPAs.get(i);
-            }
-        }
-        return ((expectedGPA*this.totalSemesters) - accGPA) / (this.totalSemesters - currentSemester);
+        double meanGPA = this.getMeanGPA(currentSemester);
+        return ((expectedGPA*this.totalSemesters) - meanGPA*currentSemester) / (this.totalSemesters - currentSemester);
     }
 
     // Method to calculate the *minimum marks for a course to achieve the expected grade for a course
@@ -305,5 +379,39 @@ public class Student {
         return courseGrade;
     }
 
+    // Method to calculate the final GPA
+    public Double getFinalGPA(){
+        return this.getMeanGPA(this.getTotalSemesters());
+    }
+
+    // Method to calculate the final Grade
+    public String getFinalClass(){
+        Double finalGPA = this.getFinalGPA();
+
+        String finalGrade = "";
+        if (3.7 < finalGPA && finalGPA <= 4.00){
+            finalGrade = "A";
+        } else if (3.3 < finalGPA && finalGPA <= 3.7){
+            finalGrade = "A-";
+        } else if (3.0 < finalGPA && finalGPA <= 3.3){
+            finalGrade = "B+";
+        } else if (2.7 < finalGPA && finalGPA <= 3.0){
+            finalGrade = "B";
+        } else if (2.3 < finalGPA && finalGPA <= 2.7){
+            finalGrade = "B-";
+        } else if (2.0 < finalGPA && finalGPA <= 2.3){
+            finalGrade = "C+";
+        } else if (1.7 < finalGPA && finalGPA <= 2.0){
+            finalGrade = "C";
+        } else if (1.3 < finalGPA && finalGPA <= 1.7){
+            finalGrade = "D+";
+        } else if (1.0 < finalGPA && finalGPA <= 1.3){
+            finalGrade = "D";
+        } else {
+            finalGrade = "W";
+        }
+        
+        return finalGrade;
+    }
+
 }
-// add final GPA calculation
