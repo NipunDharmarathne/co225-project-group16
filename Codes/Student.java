@@ -6,17 +6,17 @@ import java.util.Scanner;
 public class Student {
 
     // non static attributes
-    String username;
-    String password;
-    String firstName;
-    String lastName;
-    String University;
-    String faculty;
-    String department;
-    int year;
-    int batchNo;
-    int regNo;
-    int totalSemesters;
+    private String username;
+    private String password;
+    private String firstName;
+    private String lastName;
+    private String University;
+    private String faculty;
+    private String department;
+    private int year;
+    private int batchNo;
+    private int regNo;
+    private int totalSemesters;
     // ArrayList to store the grades for each course in every semester
     ArrayList<ArrayList<String>> studentGrades = new ArrayList<ArrayList<String>>();
     // ArrayList to store the GPAs for every semester
@@ -58,6 +58,11 @@ public class Student {
     // Method to return the first name of the student
     public String getFirstName(){
         return this.firstName;
+    }
+
+    // Method to return the last name of the student
+    public String getLastName(){
+        return this.lastName;
     }
 
     // Method to return the University of the student
