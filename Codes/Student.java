@@ -20,10 +20,10 @@ public class Student {
     private int batchNo;
     private int regNo;
     private int totalSemesters;
-    // ArrayList to store the grades for each course in every semester
-    ArrayList<ArrayList<String>> studentGrades = new ArrayList<ArrayList<String>>();
+    // 2D ArrayList to store the grades for each course in every semester
+    public ArrayList<ArrayList<String>> studentGrades = new ArrayList<ArrayList<String>>();
     // ArrayList to store the GPAs for every semester
-    List <Double> semesterGPAs = new ArrayList<>();
+    public List <Double> semesterGPAs = new ArrayList<>();
 
     // Constructor for a new sign up
     public Student(String username, String password, String firstName, String lastName, String University, String faculty, int batchNo, int regNo, int totalSemesters){
@@ -306,3 +306,4 @@ public class Student {
     }
 
 }
+// add final GPA calculation

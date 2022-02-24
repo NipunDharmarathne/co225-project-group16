@@ -14,6 +14,7 @@ public class Admin {
     private String department;
     private int year;
     private int totalSemesters;
+    // private int dptDividingSem;
 
     // Constructor for a new sign up
     public Admin (String username, String password, String firstName, String lastName, String University, String faculty, int year, int totalSemesters){
@@ -25,6 +26,7 @@ public class Admin {
         this.faculty = faculty;
         this.year = year;
         this.totalSemesters = totalSemesters;
+        // this.dptDividingSem = dptDividingSem;
     }
 
     // Method to set the department
@@ -77,17 +79,23 @@ public class Admin {
         return this.totalSemesters;
     }
 
+    /* // Method to return the department dividing semester
+    public int getDptDividingSem(){
+        return this.dptDividingSem;
+    } */
+
     // Method to add courses
     public void addCourses(){
-        boolean exists = false;
+        boolean depExists = false;
+        boolean facExists = false;
         if (this.year != 1){
             for (Department dptObj : Department.departments){
                 String uni = dptObj.getUniversity();
                 String fac = dptObj.getFaculty();
                 String dept = dptObj.getDepartment();
     
-                if (uni.equalsIgnoreCase(this.getUniversity()) && fac.equalsIgnoreCase(this.getFaculty()) && dept.equalsIgnoreCase(this.department)){
-                    exists = true;
+                if (uni.equalsIgnoreCase(this.getUniversity()) && fac.equalsIgnoreCase(this.getFaculty()) && dept.equalsIgnoreCase(this.getDepartment())){
+                    depExists = true;
                     int semester = this.year*2 -4;
                     Scanner in = new Scanner(System.in);
                     // Each admin can add only two semesters
@@ -106,7 +114,7 @@ public class Admin {
                     in.close();
                 }
             }
-            if (!exists){
+            if (!depExists){
                 Department dept = new Department(this.University, this.faculty, this.department, this.totalSemesters);
                 int semester = this.year*2 -4;
                 Scanner in = new Scanner(System.in);
@@ -127,10 +135,50 @@ public class Admin {
                 in.close();
             }
         } else {
+            for (Faculty facObj : Faculty.FacultyArray){
+                String Uni = facObj.getUniversity();
+                String faculty = facObj.getFaculty();
 
+                if (this.getUniversity().equalsIgnoreCase(Uni) && this.getFaculty().equalsIgnoreCase(faculty)){
+                    facExists = true;
+                    Scanner in = new Scanner(System.in);
+                    for (int i =0;i<2;++i){
+                        System.out.println("Please enter the total subjects in semester " + (i+1) + ": ");
+                        int totalSubjects = in.nextInt();
+                        for (int sub=0;sub<totalSubjects;++sub){
+                            System.out.println("Enter the Course code "+ (sub+1) +": ");
+                            String courseCode = in.next();
+                            System.out.println("Enter the Course name "+ (sub+1) +": ");
+                            String courseName = in.next();
+                            String course = courseCode + " " + courseName;
+                            facObj.firstYrCourses.get(i).add(course);
+                        }
+                    }
+                    in.close();
+                } 
+            }
+            if (!facExists){
+                Faculty fac = new Faculty(this.getUniversity(), this.getFaculty());
+                Scanner in = new Scanner(System.in);
+                for (int i =0;i<2;++i){
+                    System.out.println("Please enter the total subjects in semester " + (i+1) + ": ");
+                    int totalSubjects = in.nextInt();
+                    for (int sub=0;sub<totalSubjects;++sub){
+                        System.out.println("Enter the Course code "+ (sub+1) +": ");
+                        String courseCode = in.next();
+                        System.out.println("Enter the Course name "+ (sub+1) +": ");
+                        String courseName = in.next();
+                        String course = courseCode + " " + courseName;
+                        fac.firstYrCourses.get(i).add(course);
+                    }
+                }
+                in.close();
+                Faculty.FacultyArray.add(fac);
+            }
         }
     }
 
+    // Method to add a new department to the faculty
     public void addFacultytoFacultyArray(Admin ad, Department dept){
         boolean isExists = false;
 
@@ -140,6 +188,7 @@ public class Admin {
 
             if (ad.getUniversity().equalsIgnoreCase(uni) && ad.getFaculty().equalsIgnoreCase(faculty)){
                 isExists = true;
+                fac.facultyDepartments.add(dept);
             }
         }
 

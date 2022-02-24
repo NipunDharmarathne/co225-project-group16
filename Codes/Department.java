@@ -1,11 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
-// import java.util.Scanner;
 
 public class Department extends Faculty {
 
     // static attributes
-    // list of departments a faculty has
+    // list of departments which a faculty has
     public static List <Department> departments = new ArrayList<>();
 
     // non static attributes
@@ -20,7 +19,7 @@ public class Department extends Faculty {
     public Department(String University, String faculty, String department, int totalSemesters){
         super(University, faculty);
         this.department = department;
-        this.totalSemesters = totalSemesters - 2;
+        this.totalSemesters = totalSemesters-2;
         this.departmentStudents = new ArrayList<>();
         this.semesterCourses = new ArrayList<ArrayList<String>>();
 
@@ -35,11 +34,4 @@ public class Department extends Faculty {
         return this.department;
     }
 
-
-    
-
-
-
-
-    
 }
