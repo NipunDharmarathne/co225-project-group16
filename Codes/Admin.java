@@ -102,10 +102,11 @@ public class Admin {
                     for (int i =0;i<2;++i){
                         System.out.println("Please enter the total subjects in semester " + (semester+i+3) + ": ");
                         int totalSubjects = in.nextInt();
-                        for (int sub=0;sub<totalSubjects;++sub){
-                            System.out.println("Enter the Course code "+ (sub+1) +": ");
+                        dptObj.semesterCourses.get(semester+i).add(Integer.toString(totalSubjects));
+                        for (int sub=1;sub<=totalSubjects;++sub){
+                            System.out.println("Enter the Course code "+ (sub) +": ");
                             String courseCode = in.next();
-                            System.out.println("Enter the Course name "+ (sub+1) +": ");
+                            System.out.println("Enter the Course name "+ (sub) +": ");
                             String courseName = in.next();
                             String course = courseCode + " " + courseName;
                             dptObj.semesterCourses.get(semester+i).add(course);
@@ -118,13 +119,14 @@ public class Admin {
                 Department dept = new Department(this.University, this.faculty, this.department, this.totalSemesters);
                 int semester = this.year*2 -4;
                 Scanner in = new Scanner(System.in);
-                for (int i =0;i<2;++i){
+                for (int i=0;i<2;++i){
                     System.out.println("Please enter the total subjects in semester " + (semester+i+3) + ": ");
                     int totalSubjects = in.nextInt();
-                    for (int sub=0;sub<totalSubjects;++sub){
-                        System.out.println("Enter the Course code "+ (sub+1) +": ");
+                    dept.semesterCourses.get(semester+i).add(Integer.toString(totalSubjects));
+                    for (int sub=1;sub<=totalSubjects;++sub){
+                        System.out.println("Enter the Course code "+ (sub) +": ");
                         String courseCode = in.next();
-                        System.out.println("Enter the Course name "+ (sub+1) +": ");
+                        System.out.println("Enter the Course name "+ (sub) +": ");
                         String courseName = in.next();
                         String course = courseCode + " " + courseName;
                         dept.semesterCourses.get(semester+i).add(course);
@@ -145,10 +147,11 @@ public class Admin {
                     for (int i =0;i<2;++i){
                         System.out.println("Please enter the total subjects in semester " + (i+1) + ": ");
                         int totalSubjects = in.nextInt();
-                        for (int sub=0;sub<totalSubjects;++sub){
-                            System.out.println("Enter the Course code "+ (sub+1) +": ");
+                        facObj.firstYrCourses.get(i).add(Integer.toString(totalSubjects));
+                        for (int sub=1;sub<=totalSubjects;++sub){
+                            System.out.println("Enter the Course code "+ (sub) +": ");
                             String courseCode = in.next();
-                            System.out.println("Enter the Course name "+ (sub+1) +": ");
+                            System.out.println("Enter the Course name "+ (sub) +": ");
                             String courseName = in.next();
                             String course = courseCode + " " + courseName;
                             facObj.firstYrCourses.get(i).add(course);
@@ -163,10 +166,11 @@ public class Admin {
                 for (int i =0;i<2;++i){
                     System.out.println("Please enter the total subjects in semester " + (i+1) + ": ");
                     int totalSubjects = in.nextInt();
-                    for (int sub=0;sub<totalSubjects;++sub){
-                        System.out.println("Enter the Course code "+ (sub+1) +": ");
+                    fac.firstYrCourses.get(i).add(Integer.toString(totalSubjects));
+                    for (int sub=1;sub<=totalSubjects;++sub){
+                        System.out.println("Enter the Course code "+ (sub) +": ");
                         String courseCode = in.next();
-                        System.out.println("Enter the Course name "+ (sub+1) +": ");
+                        System.out.println("Enter the Course name "+ (sub) +": ");
                         String courseName = in.next();
                         String course = courseCode + " " + courseName;
                         fac.firstYrCourses.get(i).add(course);
