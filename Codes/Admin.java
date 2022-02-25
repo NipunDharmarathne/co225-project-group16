@@ -84,6 +84,16 @@ public class Admin {
         return this.dptDividingSem;
     } */
 
+    // Method to check the admin is eleigible to add courses or not
+    public boolean checkAdmin(){
+        boolean adminOK = false;
+        // checking whether the relevant semester courses of the admin's faculty is already entered or not
+        // if it is already entered the system won't let him add courses
+        // and this method will return false;
+        // if it is not entered this method will return true;
+        return adminOK;
+    }
+
     // Method to add courses
     public void addCourses(){
         boolean depExists = false;
