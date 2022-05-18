@@ -33,6 +33,17 @@ public class Student {
 	@Column(name = "registered")
 	private boolean registered;
 
+	public Student(long regNo, String username, String password, String firstName, String lastName, int semester,
+			boolean registered) {
+		this.regNo = regNo;
+		this.username = username;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.semester = semester;
+		this.registered = registered;
+	}
+
 	public Student(long regNo, String username, String firstName, String lastName, int semester, boolean registered) {
 		this.regNo = regNo;
 		this.username = username;

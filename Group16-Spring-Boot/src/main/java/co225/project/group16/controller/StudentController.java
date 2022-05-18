@@ -34,7 +34,7 @@ public class StudentController {
 	public ResponseEntity<Student> createStudent(@RequestBody Student student) {
 		try {
 			Student _student = studentRepository
-					.save(new Student(student.getRegNo(), student.getUsername(), student.getFirstName(), student.getLastName(), student.getSemester(), student.isRegistered()));
+					.save(new Student(student.getRegNo(), student.getUsername(), student.getPassword(),student.getFirstName(), student.getLastName(), student.getSemester(), student.isRegistered()));
 			return new ResponseEntity<>(_student, HttpStatus.CREATED);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -88,16 +88,13 @@ public class StudentController {
 	}
 	
 	
- 	@GetMapping("/student/registered")
-	public ResponseEntity<List<Student>> findRegisteredStudents() {
-		try {
-			List<Student> registeredStudents = studentRepository.findRegisteredStudents(true);
-			if (registeredStudents.isEmpty()) {
-				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-			}
-			return new ResponseEntity<>(registeredStudents, HttpStatus.OK);
-		} catch (Exception e) {
-			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-	}
+	/*
+	 * @GetMapping("/student/registered") public ResponseEntity<List<Student>>
+	 * findRegisteredStudents() { try { List<Student> registeredStudents =
+	 * studentRepository.findRegisteredStudents(true); if
+	 * (registeredStudents.isEmpty()) { return new
+	 * ResponseEntity<>(HttpStatus.NO_CONTENT); } return new
+	 * ResponseEntity<>(registeredStudents, HttpStatus.OK); } catch (Exception e) {
+	 * return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR); } }
+	 */
 }
