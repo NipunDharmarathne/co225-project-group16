@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Project UI</string>
+    <string name="students_results_management_system">Students Results Management System</string>
+    <string name="login_as_admin">Login As Admin</string>
+    <string name="hello_admin">HELLO Admin</string>
+    <string name="login_as_student">Login AS STUDENT</string>
+    <string name="new_user">new user</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="no_of_attempts_remaining">No of attempts remaining:</string>
+</resources>
