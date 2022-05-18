@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">225-project</string>
+    <string name="student_results_management_system">Student Results Management System</string>
+    <string name="login_as_admin">Login As Admin</string>
+    <string name="login_as_student">LogIn As Student</string>
+    <string name="new_user">New user</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="no_of_incorrect_attempts">No of incorrect attempts:</string>
+</resources>
