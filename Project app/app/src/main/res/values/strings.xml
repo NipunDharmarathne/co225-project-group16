@@ -20,4 +20,11 @@
     <string name="first_name">First Name:</string>
     <string name="enter_a_password">Enter a Password:</string>
     <string name="enter_an_username">Enter an Username:</string>
+    <string name="new_admin">NEW ADMIN</string>
+    <string name="new_student">NEW STUDENT</string>
+    <string name="new_admin_btn">new ADMIN</string>
+    <string name="new_adm">new Admin</string>
+    <string name="new_admin_login">new admin</string>
+    <string name="new_administrator">new administrator</string>
+    <string name="new_admins">new admin</string>
 </resources>

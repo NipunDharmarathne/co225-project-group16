@@ -9,10 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.projectui.CourseRegistration;
-import com.example.projectui.NewUserLogin;
-import com.example.projectui.Student;
-
 public class MainActivity extends AppCompatActivity {
 
     private EditText userName;
@@ -20,7 +16,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView info;
     private Button adminLogin;
     private Button stdLogin;
-    private Button newUser;
+    private Button newStd;
+    private Button newAdmin;
     private int counter = 5;
 
 
@@ -34,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
         info = (TextView) findViewById(R.id.attemptsNo);
         adminLogin = (Button) findViewById(R.id.AdminButton);
         stdLogin = (Button) findViewById(R.id.StdButton);
-        newUser = (Button) findViewById(R.id.NewUserBtn);
+        newStd = (Button) findViewById(R.id.NewStdBtn);
+        newAdmin = (Button) findViewById(R.id.admNewBtn);
 
         info.setText("No of attempts remaining: 5");
 
@@ -52,10 +50,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        newUser.setOnClickListener(new View.OnClickListener() {
+        newStd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openNewUserForum();
+            }
+        });
+
+        newAdmin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openNewAdminForum();
             }
         });
 
@@ -91,6 +96,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void openNewUserForum(){
         Intent intent = new Intent (MainActivity.this, NewUserLogin.class);
+        startActivity(intent);
+    }
+
+    private void openNewAdminForum(){
+        Intent intent = new Intent (MainActivity.this, AdminNewLogin.class);
         startActivity(intent);
     }
 }
