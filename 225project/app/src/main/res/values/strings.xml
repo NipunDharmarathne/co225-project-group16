@@ -8,4 +8,17 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="no_of_incorrect_attempts">No of incorrect attempts:</string>
+    <string name="no_of_attempts_remaining">No of attempts remaining:</string>
+    <string name="button">Button</string>
+    <string name="login_details">Login Details</string>
+    <string name="current_semester_in_the_academic_year">Current Semester in the Academic Year:</string>
+    <string name="reg_no">Reg. No:</string>
+    <string name="academic_year">Academic Year:</string>
+    <string name="department">Department:</string>
+    <string name="faculty">Faculty:</string>
+    <string name="university">University:</string>
+    <string name="last_name">Last Name:</string>
+    <string name="first_name">First Name:</string>
+    <string name="enter_a_password">Enter a Password:</string>
+    <string name="enter_an_username">Enter an Username:</string>
 </resources>

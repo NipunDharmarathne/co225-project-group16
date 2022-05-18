@@ -48,6 +48,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        newUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openNewUserForum();
+            }
+        });
+
     }
 
     private void adminValidate(String userName, String userPwd){
@@ -76,5 +83,10 @@ public class MainActivity extends AppCompatActivity {
                 stdLogin.setEnabled(false);
             }
         }
+    }
+
+    private void openNewUserForum(){
+        Intent intent = new Intent (MainActivity.this, FourthActivity.class);
+        startActivity(intent);
     }
 }
