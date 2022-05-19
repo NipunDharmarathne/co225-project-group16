@@ -63,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
                 openNewAdminForum();
             }
         });
-
     }
 
     private void adminValidate(String userName, String userPwd){
