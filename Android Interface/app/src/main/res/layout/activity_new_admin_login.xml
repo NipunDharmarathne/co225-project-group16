@@ -31,7 +31,7 @@
         app:layout_constraintVertical_bias="0.976" />
 
     <EditText
-        android:id="@+id/newUserName17"
+        android:id="@+id/totSubsScndSem"
         android:layout_width="201dp"
         android:layout_height="35dp"
         android:autofillHints=""
@@ -45,7 +45,7 @@
         app:layout_constraintVertical_bias="0.876" />
 
     <EditText
-        android:id="@+id/newUserName16"
+        android:id="@+id/totSubsFirstSem"
         android:layout_width="201dp"
         android:layout_height="35dp"
         android:autofillHints=""
@@ -59,7 +59,7 @@
         app:layout_constraintVertical_bias="0.783" />
 
     <EditText
-        android:id="@+id/newUserName15"
+        android:id="@+id/adminYr"
         android:layout_width="201dp"
         android:layout_height="35dp"
         android:autofillHints=""
@@ -145,7 +145,7 @@
         app:layout_constraintVertical_bias="0.452" />
 
     <EditText
-        android:id="@+id/newUserName2"
+        android:id="@+id/adminDpt"
         android:layout_width="201dp"
         android:layout_height="35dp"
         android:autofillHints=""
@@ -159,7 +159,7 @@
         app:layout_constraintVertical_bias="0.606" />
 
     <EditText
-        android:id="@+id/newUserName9"
+        android:id="@+id/adminFaculty"
         android:layout_width="201dp"
         android:layout_height="35dp"
         android:autofillHints=""
@@ -173,7 +173,7 @@
         app:layout_constraintVertical_bias="0.521" />
 
     <EditText
-        android:id="@+id/newUserName10"
+        android:id="@+id/adminUniversity"
         android:layout_width="201dp"
         android:layout_height="35dp"
         android:autofillHints=""
@@ -187,7 +187,7 @@
         app:layout_constraintVertical_bias="0.439" />
 
     <EditText
-        android:id="@+id/newUserName11"
+        android:id="@+id/adminRegNo"
         android:layout_width="201dp"
         android:layout_height="35dp"
         android:autofillHints=""
@@ -201,7 +201,7 @@
         app:layout_constraintVertical_bias="0.357" />
 
     <EditText
-        android:id="@+id/newUserName12"
+        android:id="@+id/adminFullName"
         android:layout_width="201dp"
         android:layout_height="35dp"
         android:autofillHints=""
@@ -215,7 +215,7 @@
         app:layout_constraintVertical_bias="0.272" />
 
     <EditText
-        android:id="@+id/newUserName13"
+        android:id="@+id/newAdminPwd"
         android:layout_width="201dp"
         android:layout_height="35dp"
         android:autofillHints=""
@@ -232,10 +232,10 @@
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/last_name"
+        android:text="Reg. No: "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.086"
+        app:layout_constraintHorizontal_bias="0.076"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.372" />
@@ -244,7 +244,7 @@
         android:id="@+id/textView16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/first_name"
+        android:text="Full Name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.086"
@@ -277,7 +277,7 @@
         app:layout_constraintVertical_bias="0.123" />
 
     <EditText
-        android:id="@+id/newUserName14"
+        android:id="@+id/newAdminUserName"
         android:layout_width="201dp"
         android:layout_height="35dp"
         android:autofillHints=""
