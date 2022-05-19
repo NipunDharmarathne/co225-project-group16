@@ -13,7 +13,7 @@ public class Result {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "studentID")
-	private String studentID;
+	private long studentID;
 	
 	@Column(name = "semester")
 	private int semester;
@@ -21,7 +21,7 @@ public class Result {
 	@Column(name = "gpa")
 	private int gpa;
 
-	public Result(String studentID, int semester, int gpa) {
+	public Result(long studentID, int semester, int gpa) {
 		this.studentID = studentID;
 		this.semester = semester;
 		this.gpa = gpa;
@@ -30,10 +30,10 @@ public class Result {
 	public Result() {
 	}
 
-	public String getStudentID() {
+	public long getStudentID() {
 		return studentID;
 	}
-	public void setStudentID(String studentID) {
+	public void setStudentID(long studentID) {
 		this.studentID = studentID;
 	}
 	public int getSemester() {

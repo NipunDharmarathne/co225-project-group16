@@ -50,10 +50,10 @@ public class Course {
 	public void setAdminID(String adminID) {
 		this.adminID = adminID;
 	}
-	public String getName() {
+	public String getCourseName() {
 		return courseName;
 	}
-	public void setName(String courseName) {
+	public void setCourseName(String courseName) {
 		this.courseName = courseName;
 	}
 	public int getCredit() {
