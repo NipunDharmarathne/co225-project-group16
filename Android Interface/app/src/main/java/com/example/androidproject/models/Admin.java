@@ -22,16 +22,16 @@ public class Admin {
     @SerializedName("department")
     private String department;
     @SerializedName("year")
-    private int year;
+    private long year;
     @SerializedName("totalSubjectsInFirstSem")
-    private int totalSubjectsInFirstSem;
+    private long totalSubjectsInFirstSem;
     @SerializedName("totalSubjectsInSecondSem")
-    private int totalSubjectsInSecondSem;
+    private long totalSubjectsInSecondSem;
 
     public Admin() {
     }
 
-    public Admin(long regNo, String username, String password, String fullName, String university, String faculty, String department, int year, int totalSubjectsInFirstSem, int totalSubjectsInSecondSem) {
+    public Admin(long regNo, String username, String password, String fullName, String university, String faculty, String department, long year, long totalSubjectsInFirstSem, long totalSubjectsInSecondSem) {
         this.regNo = regNo;
         this.username = username;
         this.password = password;
@@ -44,7 +44,7 @@ public class Admin {
         this.totalSubjectsInSecondSem = totalSubjectsInSecondSem;
     }
 
-    public Admin(long regNo, String username, String fullName, String university, String faculty, String department, int year, int totalSubjectsInFirstSem, int totalSubjectsInSecondSem) {
+    public Admin(long regNo, String username, String fullName, String university, String faculty, String department, long year, long totalSubjectsInFirstSem, long totalSubjectsInSecondSem) {
         this.regNo = regNo;
         this.username = username;
         this.fullName = fullName;
@@ -112,27 +112,27 @@ public class Admin {
         this.department = department;
     }
 
-    public int getYear() {
+    public long getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(long year) {
         this.year = year;
     }
 
-    public int getTotalSubjectsInFirstSem() {
+    public long getTotalSubjectsInFirstSem() {
         return totalSubjectsInFirstSem;
     }
 
-    public void setTotalSubjectsInFirstSem(int totalSubjectsInFirstSem) {
+    public void setTotalSubjectsInFirstSem(long totalSubjectsInFirstSem) {
         this.totalSubjectsInFirstSem = totalSubjectsInFirstSem;
     }
 
-    public int getTotalSubjectsInSecondSem() {
+    public long getTotalSubjectsInSecondSem() {
         return totalSubjectsInSecondSem;
     }
 
-    public void setTotalSubjectsInSecondSem(int totalSubjectsInSecondSem) {
+    public void setTotalSubjectsInSecondSem(long totalSubjectsInSecondSem) {
         this.totalSubjectsInSecondSem = totalSubjectsInSecondSem;
     }
 }
