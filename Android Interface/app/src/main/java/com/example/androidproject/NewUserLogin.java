@@ -21,7 +21,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class NewUserLogin extends AppCompatActivity {
-
     private Button back;
     private Button next;
     private Button submit;
