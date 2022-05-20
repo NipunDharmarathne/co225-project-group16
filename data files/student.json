@@ -1,0 +1,62 @@
+[
+    {
+        "regNo": 1,
+        "username": "e18077",
+        "password": "Nip246",
+        "firstName": "Nipun",
+        "lastName": "Dharmarathna",
+        "university": "Pera",
+        "faculty": "Engineering",
+        "department": "Computer"
+    },
+    {
+        "regNo": 2,
+        "username": "e18227",
+        "password": "Din123",
+        "firstName": "Dinuka",
+        "lastName": "Mudalige",
+        "university": "Pera",
+        "faculty": "Engineering",
+        "department": "Computer"
+    },
+    {
+        "regNo": 3,
+        "username": "e18224",
+        "password": "Ravi987",
+        "firstName": "Ravindu",
+        "lastName": "Mihiranga",
+        "university": "Pera",
+        "faculty": "Engineering",
+        "department": "Computer"
+    },    
+    {
+        "regNo": 4,
+        "username": "a17217",
+        "password": "mala456",
+        "firstName": "Mala",
+        "lastName": "Kumuduni",
+        "university": "Pera",
+        "faculty": "Art",
+        "department": "Drama"
+    },
+    {
+        "regNo": 5,
+        "username": "E2019660",
+        "password": "naa789",
+        "firstName": "Nadun",
+        "lastName": "Hettiyarachchi",
+        "university": "Mora",
+        "faculty": "Engineering",
+        "department": "CSE"
+    },
+    {
+        "regNo": 6,
+        "username": "MGT161260",
+        "password": "Supu147",
+        "firstName": "Supun",
+        "lastName": "Perera",
+        "university": "Jpura",
+        "faculty": "Management",
+        "department": "Econs"
+    }
+]

@@ -1,0 +1,17 @@
+[
+    {
+        "regNo": 1,
+        "username": "e18227",
+        "password": "Din123",
+        "fullName": "Dinuka Mudalige",
+        "university": "Pera",
+        "faculty": "Engineering",
+        "department": "Computer",
+        "year": 2,
+        "totalSubjectsInFirstSem": 5,
+        "totalSubjectsInSecondSem": 6
+    },
+    {
+
+    }
+]

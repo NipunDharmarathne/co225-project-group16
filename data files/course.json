@@ -1,0 +1,33 @@
+[
+    {
+        "courseID": 3000,
+        "courseCode": "CO300",
+        "adminID": "333",
+        "courseName": "Advance Programming",
+        "credit": 3,
+        "semester": 3
+    },{
+        "courseID": 2000,
+        "courseCode": "EE200",
+        "adminID": "222",
+        "courseName": "Electrical Instruments and Measurements",
+        "credit": 3,
+        "semester": 2
+    },
+    {
+        "courseID": 1000,
+        "courseCode": "GP100",
+        "adminID": "222",
+        "courseName": "Programming Basics",
+        "credit": 2,
+        "semester": 2
+    },
+    {
+        "courseID": 4,
+        "courseCode": "CO300 Update",
+        "adminID": "344",
+        "courseName": "Advance Programming Update",
+        "credit": 3,
+        "semester": 3
+    }
+]

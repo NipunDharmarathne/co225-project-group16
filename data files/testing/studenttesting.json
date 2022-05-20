@@ -1,0 +1,38 @@
+[
+    {
+        "regNo": 1,
+        "username": "e18227",
+        "password": "abc123",
+        "firstName": "Dinuka",
+        "lastName": "Mudalige",
+        "semester": 5,
+        "registered": true
+    },
+    {
+        "regNo": 2,
+        "username": "e18077",
+        "password": "nipun123",
+        "firstName": "Nipun",
+        "lastName": "Dharmarathne",
+        "semester": 6,
+        "registered": true
+    },
+    {
+        "regNo": 3,
+        "username": "e18224",
+        "password": "ravi456",
+        "firstName": "Ravindu",
+        "lastName": "Mihiranga",
+        "semester": 5,
+        "registered": false
+    },
+    {
+        "regNo": 5,
+        "username": "e17224",
+        "password": "supu456",
+        "firstName": "Supun",
+        "lastName": "Kumara",
+        "semester": 8,
+        "registered": false
+    }
+]
