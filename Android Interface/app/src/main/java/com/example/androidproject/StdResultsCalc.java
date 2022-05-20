@@ -24,8 +24,6 @@ public class StdResultsCalc extends AppCompatActivity {
                 openCurrentGPA();
             }
         });
-
-
     }
 
     private void openCurrentGPA(){
