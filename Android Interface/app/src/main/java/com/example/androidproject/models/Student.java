@@ -24,8 +24,7 @@ public class Student {
     @SerializedName("department")
     private String department;
 
-    public Student() {
-    }
+    public Student() { }
 
     public Student(long regNo, String username, String firstName, String lastName, String university, String faculty, String department) {
         this.regNo = regNo;
